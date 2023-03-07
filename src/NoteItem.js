@@ -7,7 +7,7 @@ export default function NoteItem({ ID, Title, Note, NotePreview, noteDate }) {
     minute: "numeric",
   };
 
-  const previewLength = 280; // Choose a number of characters to display for the preview
+  const previewLength = 180; // Choose a number of characters to display for the preview
 
   const formatDate = (when) => {
     const formatted = new Date(when).toLocaleString("en-US", options);
