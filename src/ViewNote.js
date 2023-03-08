@@ -8,11 +8,13 @@ function ViewNote(){
     const [notesObjects, setNotes] = useOutletContext();
     const navigate = useNavigate(); // hook to use navigation
 
+    
     const note = notesObjects.find(note => note.ID === id);
      if (!note) {
          return <div className="noNoteFound">Note not found</div>;
     }
 
+   
     const handleDelete = () => {
         if (window.confirm("Are you sure you want to delete this note?")) {
           const updatedNotes = notesObjects.filter(note => note.ID !== id);

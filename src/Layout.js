@@ -3,8 +3,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { useState, useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 
 function Layout() {
+  const {id} = useParams()
   const [notesObjects, setNotes]= useState(JSON.parse(localStorage.getItem("localNotes")) || []);
 
   useEffect(() => {
@@ -25,7 +28,10 @@ function Layout() {
   }
 
   function addNote() {
-    var newdata = { ID: uuidv4(), Title: "Untitled", noteContent: "", notePreview: "...", Date: "" };
+    let  now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+    let date = now.toISOString().slice(0,16);
+    var newdata = { ID: uuidv4(), Title: "Untitled", noteContent: "", notePreview: "...", Date: date};
     setNotes([newdata, ...notesObjects]);
     navigate(`/EditNote/${newdata.ID}`, { replace: true }); 
   }
@@ -59,8 +65,13 @@ function Layout() {
               </div>
               
               {notesObjects.map(note => (
+
                 <NavLink key={note.ID} to={'/ViewNote/' + note.ID}>
-                  <NoteItem ID={note.ID} Title={note.Title} Note={note.noteContent} NotePreview={note.notePreview} noteDate={note.Date} />
+                 
+                  <NoteItem className={"noteCard "
+                + (note.ID === id ? "true" : "false")
+                } ID={note.ID} Title={note.Title} Note={note.noteContent} NotePreview={note.notePreview} noteDate={note.Date}/>
+
                 </NavLink>
               ))}
             

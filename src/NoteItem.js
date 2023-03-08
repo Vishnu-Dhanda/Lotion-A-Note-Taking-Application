@@ -1,4 +1,6 @@
-export default function NoteItem({ ID, Title, Note, NotePreview, noteDate }) {
+
+
+export default function NoteItem({ className, ID, Title, Note, NotePreview, noteDate}) {
   const options = {
     year: "numeric",
     month: "long",
@@ -6,6 +8,7 @@ export default function NoteItem({ ID, Title, Note, NotePreview, noteDate }) {
     hour: "numeric",
     minute: "numeric",
   };
+  
 
   const previewLength = 180; // Choose a number of characters to display for the preview
 
@@ -26,7 +29,7 @@ export default function NoteItem({ ID, Title, Note, NotePreview, noteDate }) {
   }
 
   return (
-    <div className="noteCard">
+    <div className={className}>
       <div className="noteHeading">{Title}</div>
       <div className="noteDate">{formattedDate}</div>
       <div

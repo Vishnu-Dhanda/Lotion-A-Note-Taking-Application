@@ -376,6 +376,10 @@ h5{
 
 
 .noteCard:hover{
-  background-color: #d0deff;
-  transition: 0.4s;
+  background-color: #a3cdff;
+  transition: 0.2s;
+}
+
+.noteCard.true{
+  background-color: #a3cdff  !important;
 }
