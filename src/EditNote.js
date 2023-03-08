@@ -69,7 +69,7 @@ export default function EditNote(){
                 </div>
                     {/* reactquill section */}  
                     
-                    <ReactQuill theme="snow" value={value} onChange={setValue}  defaultValue={note.noteContent} />
+                    <ReactQuill placeholder="Your text here" theme="snow" value={value} onChange={setValue}  defaultValue={note.noteContent} />
                     
         </div>
         
